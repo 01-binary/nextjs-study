@@ -8,10 +8,20 @@ const NavBar = () => {
   return (
     <nav>
       <Link href="/">
-        <a style={{ color: router.pathname === "/" ? "red" : "blue" }}>Home</a>
+        <a
+          className={`${styles.link} ${
+            router.pathname === "/" ? styles.active : ""
+          }`}
+        >
+          Home
+        </a>
       </Link>
       <Link href="/about">
-        <a style={{ color: router.pathname === "/about" ? "red" : "blue" }}>
+        <a
+          className={`${styles.link} ${
+            router.pathname === "/about" ? styles.active : ""
+          }`}
+        >
           About
         </a>
       </Link>
