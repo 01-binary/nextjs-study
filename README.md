@@ -45,4 +45,10 @@ atag 쓰지마 (브라우저가 전체 페이지를 새로고침한다ㅏ) -> cl
 style
 
 module
-styled jsx
+styled jsx : scope 한정 적용
+
+### APP
+
+
+App component : 모든 컴포넌트의 blueprint를 커스텀할 수 있는 장소
+App page
