@@ -40,3 +40,9 @@ hydration : 초기 상태로 pre-rendering
 -  페이지가 딱 떳을떄는 html만 보임 이후에 react.js가 client로 전송되면 react app가 된다
 
 atag 쓰지마 (브라우저가 전체 페이지를 새로고침한다ㅏ) -> client side nav 쓰셈 ㄲ
+
+
+style
+
+module
+styled jsx
