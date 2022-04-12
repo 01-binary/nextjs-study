@@ -186,3 +186,6 @@ You should not fetch an API Route from `getStaticProps` or `getStaticPaths`. Ins
 Here’s why: `getStaticProps` and `getStaticPaths` run only on the server-side and will never run on the client-side. Moreover, these functions will not be included in the JS bundle for the browser. That means you can write code such as direct database queries without sending them to browsers. Read the Writing Server-Side code documentation to learn more.
 
 API Route : 서버 사이드에서 실행된다. (cs X)
+
+
+API 키 숨기기 : 
