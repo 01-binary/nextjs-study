@@ -62,6 +62,7 @@ Next.js optimizes images on-demand
 
 <Script />
 
+```
       <Script
         src="https://connect.facebook.net/en_US/sdk.js"
         strategy="lazyOnload"
@@ -69,7 +70,7 @@ Next.js optimizes images on-demand
           console.log(`script loaded correctly, window.FB has been populated`)
         }
       />
-
+```
 
 Next.js compiles CSS using PostCSS.
 
