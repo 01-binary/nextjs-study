@@ -188,4 +188,29 @@ Here’s why: `getStaticProps` and `getStaticPaths` run only on the server-side 
 API Route : 서버 사이드에서 실행된다. (cs X)
 
 
-API 키 숨기기 : 
+API 키 숨기기 : `next.config.js`, Server Side Rendering `getServerSideProps`
+
+redirects
+
+```javascript
+    async redirects() {
+    return [{
+      source: '/old-blog/:path*',
+      destination: '/new-sexy-blog/:path*',
+      permanent: false,
+    }];
+  },
+```
+
+rewrites : redirect를 하기는 하지만 URL이 변하지는 않는다.
+
+```javascript
+    async rewrites() {
+    return [
+      {
+        source: "/api/movies",
+        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      },
+    ];
+  },
+```
