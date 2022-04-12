@@ -70,3 +70,18 @@ Next.js optimizes images on-demand
         }
       />
 
+
+Next.js compiles CSS using PostCSS.
+
+https://nextjs.org/learn/basics/assets-metadata-css/styling-tips 
+when tailwind setting in nextjs
+
+By default, Next.js pre-renders every page
+
+next의 Pre render 종류
+
+- Static Generation (Recommended): The HTML is generated at build time and will be reused on each request.
+- Server-side Rendering: The HTML is generated on each request.
+
+
+You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
