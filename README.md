@@ -52,3 +52,21 @@ styled jsx : scope 한정 적용
 
 App component : 모든 컴포넌트의 blueprint를 커스텀할 수 있는 장소
 App page
+
+
+whenever Link components appear in the browser’s viewport, Next.js automatically prefetches the code for the linked page in the background. By the time you click the link, the code for the destination page will already be loaded in the background, and the page transition will be near-instant!
+
+<Imgae />
+
+Next.js optimizes images on-demand
+
+<Script />
+
+      <Script
+        src="https://connect.facebook.net/en_US/sdk.js"
+        strategy="lazyOnload"
+        onLoad={() =>
+          console.log(`script loaded correctly, window.FB has been populated`)
+        }
+      />
+
