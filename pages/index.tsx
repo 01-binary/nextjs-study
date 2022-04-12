@@ -1,9 +1,31 @@
-import NavBar from "../components/NavBar";
+import { getSortedPostsData } from "../lib/posts";
 
-const Home = () => {
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+const Home = ({ allPostsData }) => {
   return (
     <div>
       <h1>Hello</h1>
+      <section>
+        <ul>
+          {allPostsData.map(({ id, date, title }) => (
+            <li key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 };

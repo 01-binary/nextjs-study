@@ -60,16 +60,15 @@ whenever Link components appear in the browser’s viewport, Next.js automatical
 
 Next.js optimizes images on-demand
 
-<Script />
 
-```
-      <Script
-        src="https://connect.facebook.net/en_US/sdk.js"
-        strategy="lazyOnload"
-        onLoad={() =>
-          console.log(`script loaded correctly, window.FB has been populated`)
-        }
-      />
+```javascript
+    <Script
+    src="https://connect.facebook.net/en_US/sdk.js"
+    strategy="lazyOnload"
+    onLoad={() =>
+        console.log(`script loaded correctly, window.FB has been populated`)
+    }
+    />
 ```
 
 Next.js compiles CSS using PostCSS.
@@ -106,3 +105,22 @@ export async function getStaticProps() {
   }
 }
 ```
+
+### Static Generation 
+
+Essentially, `getStaticProps` allows you to tell Next.js: “Hey, this page has some data dependencies — so when you pre-render this page at build time, make sure to resolve them first!”
+
+
+ `getStaticProps` only runs on the server-side.  It will never run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
+
+- In development (npm run dev or yarn dev), getStaticProps runs on every request.
+- In production, getStaticProps runs at build time. However, this behavior can be enhanced using the fallback key returned by getStaticPaths
+
+Only Allowed in a Page
+getStaticProps can only be exported from a page. You can’t export it from non-page files.
+
+One of the reasons for this restriction is that React needs to have all the required data before the page is rendered.
+
+### Server Side Rendering
+
+To use Server-side Rendering, you need to export `getServerSideProps` instead of `getStaticProps` from your page.
