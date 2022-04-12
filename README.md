@@ -124,3 +124,42 @@ One of the reasons for this restriction is that React needs to have all the requ
 ### Server Side Rendering
 
 To use Server-side Rendering, you need to export `getServerSideProps` instead of `getStaticProps` from your page.
+
+```
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      // props for your component
+    }
+  }
+}
+```
+
+Because getServerSideProps is called at request time, its parameter (context) contains request specific parameters.
+
+You should use getServerSideProps only if you need to pre-render a page whose data must be fetched at request time. Time to first byte (TTFB) will be slower than getStaticProps because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
+
+Static Generation without Data + Fetch Data on the Client-Side 
+-> ssr에서 Fetch안하고 client side에서 fetch할 수도 있다. (seo가 필요 없을 경우에 쓸 수 있다)
+
+
+### SWR
+
+We highly recommend it if you’re fetching data on the client side
+
+
+### Dynamic Route
+
+```javascript
+export async function getStaticPaths() {
+  // Return a list of possible value for id
+  const paths = getAllPostIds();
+  return {
+    paths,
+    fallback: false,
+  };
+}
+```
+
+`getStaticPaths` : 가능한 [id] 리스트 get 
+pages/**/[id].tsx 형태의 동적 라우팅 페이지 중, 빌드 시에 static하게 생성할 페이지를 정함
