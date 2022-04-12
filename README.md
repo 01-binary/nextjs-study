@@ -163,3 +163,19 @@ export async function getStaticPaths() {
 
 `getStaticPaths` : 가능한 [id] 리스트 get 
 pages/**/[id].tsx 형태의 동적 라우팅 페이지 중, 빌드 시에 static하게 생성할 페이지를 정함
+
+
+#### Catch-all Routes
+Dynamic routes can be extended to catch all paths by adding three dots (...) inside the brackets. For example:
+
+pages/posts/[...id].js matches /posts/a, but also /posts/a/b, /posts/a/b/c and so on.
+
+#### 404 Pages
+To create a custom 404 page, create pages/404.js. This file is statically generated at build time.
+
+```javascript
+// pages/404.js
+export default function Custom404() {
+  return <h1>404 - Page Not Found</h1>
+}
+```
