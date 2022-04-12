@@ -85,3 +85,23 @@ next의 Pre render 종류
 
 
 You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+
+Static Page에서 데이터를 fetch 해야할 경우 build time에서 데이터를 fetch하고 페이지(html)를 만든다.
+-> getStaticProps 이걸 쓴다.
+
+예시
+
+```javascript
+export default function Home(props) { ... }
+
+export async function getStaticProps() {
+  // Get external data from the file system, API, DB, etc.
+  const data = ...
+
+  // The value of the `props` key will be
+  //  passed to the `Home` component
+  return {
+    props: ...
+  }
+}
+```
