@@ -214,3 +214,19 @@ rewrites : redirect를 하기는 하지만 URL이 변하지는 않는다.
     ];
   },
 ```
+
+
+실행 순서 :
+
+`getServerSideProps` -> `App Component` -> `Component`
+
+**home에서 detail로 link로 이동한 경우 (Client Router)**
+
+서버에서 `getServerSideProps` 실행 -> 클라이언트에서 `App Component` -> `Component` render
+
+**detail로 url통해 바로 이동한 경우**
+
+서버에서 `getServerSideProps` -> `App Component` -> `Component` (html pre-render를 위해) -> 클라이언트에서 html를 받고 다시 `App Component` -> `Component` render
+
+
+컴포넌트 내부에 들어있는 router는 cs에서만 실행됨
