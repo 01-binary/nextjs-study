@@ -230,3 +230,29 @@ rewrites : redirect를 하기는 하지만 URL이 변하지는 않는다.
 
 
 컴포넌트 내부에 들어있는 router는 cs에서만 실행됨
+
+---
+
+공식문서
+
+Each page is associated with a route based on its file name.
+
+When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called hydration.)
+
+`getServerSideProps` 안에서 `API Route` call 하지마라
+
+데이터가 자주 바끼면 cs에서 call해라
+
+If an error is thrown inside getServerSideProps, it will show the pages/500.js file.
+
+getStaticPaths will only run during build in production,
+
+`getStaticProps` runs during next build for any paths returned during build
+`getStaticProps` runs in the background when using fallback: true
+`getStaticProps` is called before initial render when using fallback: blocking
+
+`getStaticPaths` can only be exported from a dynamic route that also uses getStaticProps
+
+In development (next dev), getStaticPaths will be called on every request.
+
+`getStaticProps` always runs on the server and never on the client.
