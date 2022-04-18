@@ -266,3 +266,25 @@ HYDRATE의 등장은 SSR을 위한 것으로, getInitialProps와 getServerSidePr
 
 next에서 생성한 redux store와 client에서 생성한 redux store는 다르다.
 이 둘을 합칠 때 사용하는 것이 HYDRATE 이다. 서버에서 생성한 상태를 client store에 합쳐준다.
+
+getServerSideProps에서 사용하기 위한 모듈은 최상단에 import하여 사용 가능하다.
+getServerSideProps에 사용된 모듈들은 클라이언트 측에 번들로 제공 되지 않는다.
+즉, 이 영역에서는 서버 측 코드를 작성 할 수 있게 된다.
+예를 들어 숨기고 싶은 api url 또는 파일 읽기, 데이터베이스 읽기 등이 포함된다.
+
+getServerSideProps는 항상 페이지 내에 사용되는 데이터가 최신이어야 할 때 사용해야 한다.
+매번 페이지가 요청 될때 마다 getServerSideProps를 통해 프리랜더링 과정이 일어나
+Time to first Byte (TTFB) 가 getStaticProps보다 느리기 때문이다.
+또, getServerSideProps는 추가 설정 없이는 결과가 CDN에 캐시되지 않는다는 점도 있다.
+
+getInitialProps를 사용 할 경우 ssr은 가능하지만 해당 코드가 클라이언트에서도 실행 되어야 하는
+상황이 존재 하기 때문에 코드가 브라우저에도 전달 되어야 하고,
+해당 영역에서 사용한 모듈이 있으면 또 그만큼 번들 사이즈가 커지게 된다는 점이 있다고 한다.
+
+getServerSideProps를 사용하게 되면 항상 서버 사이드에서만 실행되므로,
+해당 영역이 브라우저로 전달될 필요가 없어서 번들 사이즈를 줄일 수 있다.
+클라이언트 사이드에서 데이터 패칭을 해야 할 경우 페이지를 먼저 보여주고 스켈레톤 ui나 로딩 아이콘을 보여준 다음 가져온 데이터를 화면에 보여주는 방식을 권장 하는 듯 하다.
+
+아무래도 서버 사이드에서만 실행되어야 숨기고 싶은 api url 또는 파일 읽기, 데이터베이스 읽기 등의
+코드를 작성 할 수 있어서 클라이언트 사이드에서도 실행 가능한 getInitialProps의 애매한 포지션보다는 getServerSideProps를 권장하고 클라이언트 사이드에서의 데이터는 클라이언트에서 가져오고
+로딩 중이라는 표시를 사용자에게 해주는 방향으로 가려는 의도로 보인다.
