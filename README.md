@@ -39,6 +39,8 @@ ssr: js가 비활성화 or 인터넷이 느려서 적어도 html은 볼수잇음
 hydration : 초기 상태로 pre-rendering
 -  페이지가 딱 떳을떄는 html만 보임 이후에 react.js가 client로 전송되면 react app가 된다
 
+Hydrate는 Server Side 단에서 렌더링 된 정적 페이지와 번들링된 JS파일을 클라이언트에게 보낸 뒤, 클라이언트 단에서 HTML 코드와 React인 JS코드를 서로 매칭 시키는 과정
+
 atag 쓰지마 (브라우저가 전체 페이지를 새로고침한다ㅏ) -> client side nav 쓰셈 ㄲ
 
 
