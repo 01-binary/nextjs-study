@@ -256,3 +256,13 @@ getStaticPaths will only run during build in production,
 In development (next dev), getStaticPaths will be called on every request.
 
 `getStaticProps` always runs on the server and never on the client.
+
+
+Next.JS에서 내부적으로 사용하는 ReactDOM.hydrate 함수는 다음과 같은 일을 한다.
+서버에서 받아온 DOM tree와 자체적으로 렌더링한 tree를 비교한다.
+두 tree 사이의 diff를 얻어낸 뒤, 자체적으로(클라이언트사이드) 렌더링 한 tree에 맞춰 patch를 적용한다.
+
+HYDRATE의 등장은 SSR을 위한 것으로, getInitialProps와 getServerSideProps에서도 Redux store에 접근이 가능하도록 하기 위한 처리이다.
+
+next에서 생성한 redux store와 client에서 생성한 redux store는 다르다.
+이 둘을 합칠 때 사용하는 것이 HYDRATE 이다. 서버에서 생성한 상태를 client store에 합쳐준다.
